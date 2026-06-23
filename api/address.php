@@ -1,6 +1,6 @@
 <?php
 // api/address.php
-include '../config.php';
+include '../config_profile_buyer.php';
 header("Content-Type: application/json");
 
 $buyer = checkAPIKey();
