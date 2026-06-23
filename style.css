@@ -1,0 +1,184 @@
+/* Core Layout */
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background-color: #f0f4f8;
+    color: #333;
+    margin: 0;
+    padding: 24px;
+}
+
+.nav-container {
+    max-width: 850px;
+    margin: 0 auto 20px auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn-nav {
+    background-color: #007bff;
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    transition: background 0.2s;
+}
+
+.btn-nav:hover {
+    background-color: #0056b3;
+}
+
+.main-title {
+    text-align: center;
+    color: #007bff;
+    font-size: 26px;
+    margin-bottom: 30px;
+}
+
+/* Form & Content Containers */
+.card {
+    max-width: 850px;
+    margin: 0 auto 30px auto;
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 8px;
+    border: 1px solid #d0d7de;
+    box-sizing: border-box;
+}
+
+.card-title {
+    color: #333;
+    font-size: 20px;
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #eee;
+}
+
+.form-group {
+    margin-bottom: 16px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+.form-control:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.btn-submit {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.btn-submit:hover {
+    background-color: #0056b3;
+}
+
+/* Data Display & Tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+th, td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #e1e4e8;
+    font-size: 14px;
+    vertical-align: middle;
+}
+
+th {
+    background-color: #007bff;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+td:first-child, th:first-child {
+    text-align: left;
+    padding-left: 15px;
+}
+
+tr:hover {
+    background-color: #f8f9fa;
+}
+
+/* Status Components */
+.badge {
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #fff;
+    display: inline-block;
+    min-width: 80px;
+}
+
+.badge-proses { background-color: #ff9800; }
+.badge-sampai { background-color: #4caf50; }
+.badge-diterima { background-color: #2196f3; }
+
+/* Bingkai Pembungkus Foto Bukti */
+.bukti-box {
+    border: 1px solid #b2d4ff;
+    padding: 4px;
+    border-radius: 4px;
+    display: inline-block;
+    background-color: #f4f9ff;
+}
+
+.img-profile {
+    width: 45px;
+    height: 45px;
+    border-radius: 4px;
+    object-fit: cover;
+    border: 1px solid #ddd;
+    display: block;
+}
+
+.no-photo {
+    font-size: 12px;
+    color: #666;
+    font-style: italic;
+}
+
+/* Interactions */
+.action-links a, .action-links button {
+    text-decoration: none;
+    font-size: 13px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin: 0 4px;
+    font-weight: bold;
+}
+
+.link-edit, .link-proses { color: #007bff; }
+.link-diterima { color: #2196f3; }
+.link-sampai { color: #4caf50; }
+.link-delete, .link-hapus { color: #d9534f; }
+.action-links span { color: #ddd; }
