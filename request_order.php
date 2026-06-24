@@ -2,7 +2,7 @@
 $host = "localhost";
 $user = "root";
 $pass = "";
-$db   = "request_order_webro_zahrah"; // Ganti dengan nama database-mu jika berbeda
+$db   = "request_order_webro_zahrah";
 $koneksi = mysqli_connect($host, $user, $pass, $db);
 
 if (!$koneksi) {
@@ -11,7 +11,6 @@ if (!$koneksi) {
 
 $id = ""; $nama_barang = ""; $jumlah = ""; $catatan = ""; $sukses = ""; $gagal = "";
 
-// 1. PROSES DELETE (HAPUS)
 if (isset($_GET['op']) && $_GET['op'] == 'delete') {
     $id = $_GET['id'];
     $sql_delete = "DELETE FROM pesanan WHERE id = '$id'";
@@ -22,7 +21,6 @@ if (isset($_GET['op']) && $_GET['op'] == 'delete') {
     }
 }
 
-// 2. PROSES AMBIL DATA UNTUK EDIT
 if (isset($_GET['op']) && $_GET['op'] == 'edit') {
     $id = $_GET['id'];
     $sql_edit = "SELECT * FROM pesanan WHERE id = '$id'";
@@ -35,21 +33,20 @@ if (isset($_GET['op']) && $_GET['op'] == 'edit') {
     }
 }
 
-// 3. PROSES SIMPAN (CREATE & UPDATE)
 if (isset($_POST['simpan'])) {
     $nama_barang = $_POST['nama_barang'];
     $jumlah      = $_POST['jumlah'];
     $catatan     = $_POST['catatan'];
 
     if ($nama_barang && $jumlah) {
-        if (isset($_GET['op']) && $_GET['op'] == 'edit') { 
+        if (isset($_GET['op']) && $_GET['op'] == 'edit') {
             $id = $_GET['id'];
             $sql_update = "UPDATE pesanan SET nama_barang='$nama_barang', jumlah='$jumlah', catatan='$catatan' WHERE id='$id'";
             if (mysqli_query($koneksi, $sql_update)) {
                 $sukses = "Data berhasil diperbarui oleh Admin!";
                 header("refresh:1;url=request_order.php");
             }
-        } else { 
+        } else {
             $sql_insert = "INSERT INTO pesanan (nama_barang, jumlah, catatan) VALUES ('$nama_barang', '$jumlah', '$catatan')";
             if (mysqli_query($koneksi, $sql_insert)) {
                 $sukses = "Data baru berhasil ditambahkan oleh Admin!";

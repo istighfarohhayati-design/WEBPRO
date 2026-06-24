@@ -11,7 +11,7 @@
     
     <div class="card shadow-sm mb-4">
         <div class="card-body">
-            <h4 class="card-title mb-4"> Buat & Kelola Pesanan</h4>
+            <h4 class="card-title mb-4">Buat & Kelola Pesanan</h4>
             <form id="form-pesanan">
                 <input type="hidden" id="id_pesanan" value="">
 
@@ -50,7 +50,7 @@
                     </tr>
                 </thead>
                 <tbody id="tabel-pesanan">
-                    </tbody>
+                </tbody>
             </table>
         </div>
     </div>
@@ -59,7 +59,6 @@
 <script>
 const apiURL = 'api/pesanan.php';
 
-// 1. FUNGSI READ (Ambil Data dari API dan Tampilkan ke Tabel)
 function muatData() {
     const tabel = document.getElementById('tabel-pesanan');
     tabel.innerHTML = '<tr><td colspan="5" class="text-center text-muted">Sedang memuat data dari API...</td></tr>';
@@ -92,7 +91,6 @@ function muatData() {
         });
 }
 
-// 2. FUNGSI CREATE & UPDATE (Kirim Form)
 document.getElementById('form-pesanan').addEventListener('submit', function(e) {
     e.preventDefault();
 
@@ -102,10 +100,10 @@ document.getElementById('form-pesanan').addEventListener('submit', function(e) {
     const catatan = document.getElementById('catatan').value;
 
     const dataKirim = { nama_barang, jumlah, catatan };
-    let methodKosong = 'POST'; // Default tambah data baru
+    let methodKosong = 'POST';
 
     if (id) {
-        methodKosong = 'PUT'; // Jika ID terisi, ganti ke mode edit data
+        methodKosong = 'PUT';
         dataKirim.id = id;
     }
 
@@ -129,7 +127,6 @@ document.getElementById('form-pesanan').addEventListener('submit', function(e) {
     });
 });
 
-// 3. FUNGSI UNTUK MENARIK DATA KELALUAN KE FORM SAAT KLIK EDIT
 function isiFormEdit(id) {
     fetch(`${apiURL}?id=${id}`)
         .then(res => res.json())
@@ -147,7 +144,6 @@ function isiFormEdit(id) {
         });
 }
 
-// 4. FUNGSI DELETE (Hapus Data)
 function hapusData(id) {
     if (confirm('Yakin ingin menghapus pesanan ID ' + id + '?')) {
         fetch(apiURL, {
@@ -164,7 +160,6 @@ function hapusData(id) {
     }
 }
 
-// Reset Form ke Setelan Awal
 function resetForm() {
     document.getElementById('id_pesanan').value = '';
     document.getElementById('form-pesanan').reset();
@@ -173,7 +168,6 @@ function resetForm() {
     document.getElementById('btn-batal').classList.add('d-none');
 }
 
-// Muat data otomatis saat pertama kali halaman diakses
 window.onload = muatData;
 </script>
 

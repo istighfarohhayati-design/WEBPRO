@@ -7,7 +7,7 @@ header("Access-Control-Allow-Headers: Content-Type");
 $host = "localhost";
 $user = "root";
 $pass = "";
-$db   = "request_order_webro_zahrah"; // Ganti dengan nama database-mu jika berbeda
+$db   = "webpro";
 
 $koneksi = mysqli_connect($host, $user, $pass, $db);
 
@@ -18,18 +18,13 @@ if (!$koneksi) {
 
 $method = $_SERVER['REQUEST_METHOD'];
 
-// ==========================================
-// [READ] GET METHOD - Mengambil Data
-// ==========================================
 if ($method == 'GET') {
     if (isset($_GET['id'])) {
-        // Ambil 1 data spesifik untuk form edit
         $id = $_GET['id'];
         $sql = "SELECT * FROM pesanan WHERE id = '$id'";
         $query = mysqli_query($koneksi, $sql);
         $data = mysqli_fetch_assoc($query);
     } else {
-        // Ambil semua data untuk tabel
         $sql = "SELECT * FROM pesanan ORDER BY id DESC";
         $query = mysqli_query($koneksi, $sql);
         $data = [];
@@ -40,12 +35,8 @@ if ($method == 'GET') {
     echo json_encode(["status" => "success", "data" => $data]);
 }
 
-// ==========================================
-// [CREATE] POST METHOD - Menambah Data
-// ==========================================
 if ($method == 'POST') {
     $input = json_decode(file_get_contents('php://input'), true);
-    
     $nama_barang = $input['nama_barang'] ?? '';
     $jumlah      = $input['jumlah'] ?? '';
     $catatan     = $input['catatan'] ?? '';
@@ -62,12 +53,8 @@ if ($method == 'POST') {
     }
 }
 
-// ==========================================
-// [UPDATE] PUT METHOD - Mengubah Data
-// ==========================================
 if ($method == 'PUT') {
     $input = json_decode(file_get_contents('php://input'), true);
-    
     $id          = $input['id'] ?? '';
     $nama_barang = $input['nama_barang'] ?? '';
     $jumlah      = $input['jumlah'] ?? '';
@@ -85,9 +72,6 @@ if ($method == 'PUT') {
     }
 }
 
-// ==========================================
-// [DELETE] DELETE METHOD - Menghapus Data
-// ==========================================
 if ($method == 'DELETE') {
     $input = json_decode(file_get_contents('php://input'), true);
     $id = $input['id'] ?? '';
